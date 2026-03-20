@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Piyush | Computer Department</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg: #f5f7fa;
+    --text: #000;
+    --card: white;
+}
+
+.dark {
+    --bg: #121212;
+    --text: #fff;
+    --card: #1e1e1e;
+}
+
+/* LOADER */
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    z-index: 999;
+}
+
+/* BODY */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: none;
+}
+
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+
+/* NAV (Sticky) */
+nav {
+    background: #222;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+nav input {
+    padding: 5px;
+    width: 150px;
+}
+
+nav button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 30px;
+}
+
+/* CARDS */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 10px;
+}
+
+.card {
+    background: var(--card);
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* HOVER */
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 6px 12px;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* EXTRA SECTIONS */
+.section {
+    padding: 40px;
+    text-align: center;
+}
+
+.section img {
+    width: 120px;
+    margin: 10px;
+}
+
+/* MOBILE */
+@media(max-width:600px) {
+    header h1 {
+        font-size: 20px;
+    }
+
+    nav input {
+        width: 100px;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #111;
+    color: white;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- LOADER -->
+<div id="loader">Loading...</div>
+
+<header>
+    <h1><i class="fa-solid fa-laptop-code"></i> Computer Department</h1>
+    <p>Developed by Piyush</p>
+</header>
+
+<nav>
+    <div>
+        <a href="#notes">Notes</a>
+        <a href="#about">About</a>
+        <a href="#resources">Resources</a>
+    </div>
+    <input type="text" id="search" placeholder="Search notes...">
+    <button onclick="toggleDark()">🌙</button>
+</nav>
+
+<section class="hero">
+    <h2>Programming Notes Hub</h2>
+</section>
+
+<section class="container" id="notes">
+
+    <div class="card">
+        <i class="fa-brands fa-java"></i>
+        <h3>Java Notes</h3>
+        <a href="uploads/java.pdf" download>Download</a>
+    </div>
+
+    <div class="card">
+        <i class="fa-brands fa-python"></i>
+        <h3>Python Notes</h3>
+        <a href="uploads/python.pdf" download>Download</a>
+    </div>
+
+    <div class="card">
+        <i class="fa-solid fa-code"></i>
+        <h3>C++ Notes</h3>
+        <a href="uploads/cpp.pdf" download>Download</a>
+    </div>
+
+    <div class="card">
+        <i class="fa-brands fa-html5"></i>
+        <h3>HTML Notes</h3>
+        <a href="uploads/html.pdf" download>Download</a>
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+    <h2>About Website</h2>
+    <p>This website is created by Piyush to provide free programming notes for students.</p>
+    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721297.png">
+    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+</section>
+
+<!-- RESOURCES -->
+<section id="resources" class="section">
+    <h2>Useful Resources</h2>
+    <p>
+        🔗 <a href="https://www.w3schools.com/" target="_blank">W3Schools</a><br><br>
+        🔗 <a href="https://developer.mozilla.org/" target="_blank">MDN Docs</a><br><br>
+        🔗 <a href="https://www.geeksforgeeks.org/" target="_blank">GeeksforGeeks</a>
+    </p>
+</section>
+
+<footer>
+    © 2026 Piyush
+</footer>
+
+<script>
+// LOADER
+window.onload = function() {
+    document.getElementById("loader").style.display = "none";
+    document.body.style.display = "block";
+};
+
+// DARK MODE
+function toggleDark() {
+    document.body.classList.toggle("dark");
+}
+
+// SEARCH
+document.getElementById("search").addEventListener("keyup", function() {
+    let value = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(value) ? "block" : "none";
+    });
+});
+</script>
+
+</body>
+</html>
