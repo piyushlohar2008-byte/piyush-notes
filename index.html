@@ -1,156 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Piyush | Computer Department</title>
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 <style>
-html {
-    scroll-behavior: smooth;
-}
-
-:root {
-    --bg: #f5f7fa;
-    --text: #000;
-    --card: white;
-}
-
-.dark {
-    --bg: #121212;
-    --text: #fff;
-    --card: #1e1e1e;
-}
-
-/* LOADER */
-#loader {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #111;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    z-index: 999;
-}
-
-/* BODY */
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    display: none;
-}
+body {margin:0;font-family:Arial;background:#f5f5f5;}
 
 /* HEADER */
 header {
-    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
-    color: white;
-    padding: 15px;
-    text-align: center;
+background:#222;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px;
 }
 
-/* NAV (Sticky) */
-nav {
-    background: #222;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* CENTER TEXT */
+.header-center {
+flex:1;
+text-align:center;
+animation:fadeTop 1s ease;
 }
 
-nav a {
-    color: white;
-    margin-right: 10px;
-    text-decoration: none;
+.header-center h1 {margin:0;}
+.header-center p {margin:0;font-size:14px;}
+
+/* LOGIN BUTTON */
+.loginBtn {
+background:linear-gradient(45deg,#007bff,#00c6ff);
+color:white;
+border:none;
+padding:8px 18px;
+border-radius:20px;
+cursor:pointer;
+transition:0.3s;
 }
 
-nav input {
-    padding: 5px;
-    width: 150px;
+.loginBtn:hover {transform:scale(1.1);}
+
+/* IMAGE */
+.header-img {
+width:100%;
+height:250px;
+object-fit:cover;
 }
 
-nav button {
-    padding: 5px 10px;
-    cursor: pointer;
+/* LOGIN BOX */
+#loginBox {
+display:none;
+position:fixed;
+top:50%;left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:20px;
+box-shadow:0 0 15px gray;
+z-index:1000;
 }
 
-/* HERO */
-.hero {
-    text-align: center;
-    padding: 30px;
+/* BUTTONS */
+.mainButtons {
+display:flex;
+justify-content:center;
+gap:20px;
+padding:40px;
 }
+
+.mainButtons button {
+padding:15px 25px;
+font-size:18px;
+border:none;
+background:linear-gradient(45deg,#007bff,#00c6ff);
+color:white;
+border-radius:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.mainButtons button:hover {transform:scale(1.1);}
 
 /* CARDS */
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    padding: 10px;
+display:none;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+padding:20px;
 }
 
 .card {
-    background: var(--card);
-    margin: 10px;
-    padding: 15px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
+background:white;
+margin:10px;
+padding:25px;
+text-align:center;
+border-radius:10px;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+transition:0.4s;
 }
 
-/* HOVER */
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+.card:hover {transform:translateY(-10px);}
+
+.card button {
+background:#007bff;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
 }
 
-.card a {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 6px 12px;
-    background: #007bff;
-    color: white;
-    border-radius: 5px;
-    text-decoration: none;
-}
-
-/* EXTRA SECTIONS */
+/* SECTIONS */
 .section {
-    padding: 40px;
-    text-align: center;
+padding:60px;
+text-align:center;
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+
+.section.show {
+opacity:1;
+transform:translateY(0);
 }
 
 .section img {
-    width: 120px;
-    margin: 10px;
+width:300px;
+margin:15px;
+border-radius:10px;
 }
 
-/* MOBILE */
-@media(max-width:600px) {
-    header h1 {
-        font-size: 20px;
-    }
-
-    nav input {
-        width: 100px;
-    }
+/* STATS */
+.stats {
+display:flex;
+justify-content:space-around;
+background:#007bff;
+color:white;
+padding:40px;
 }
 
+/* FOOTER */
 footer {
-    text-align: center;
-    padding: 10px;
-    background: #111;
-    color: white;
+background:#111;
+color:white;
+padding:40px;
+text-align:center;
+}
+
+/* ANIMATION */
+@keyframes fadeTop {
+from {opacity:0; transform:translateY(-20px);}
+to {opacity:1; transform:translateY(0);}
 }
 </style>
 
@@ -158,99 +155,132 @@ footer {
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">Loading...</div>
-
 <header>
-    <h1><i class="fa-solid fa-laptop-code"></i> Computer Department</h1>
-    <p>Developed by Piyush</p>
+<div></div>
+
+<div class="header-center">
+<h1>Computer Department</h1>
+<p>Developed by Piyush</p><br>
+<p style="font-size:12px;">Learn Programming • Build Projects • Grow Skills</p>
+</div>
+
+<button class="loginBtn" onclick="openLogin()">Login</button>
 </header>
 
-<nav>
-    <div>
-        <a href="#notes">Notes</a>
-        <a href="#about">About</a>
-        <a href="#resources">Resources</a>
-    </div>
-    <input type="text" id="search" placeholder="Search notes...">
-    <button onclick="toggleDark()">🌙</button>
-</nav>
+<img class="header-img" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c">
 
-<section class="hero">
-    <h2>Programming Notes Hub</h2>
+<!-- LOGIN -->
+<div id="loginBox">
+<h3>Login</h3>
+<input type="text" placeholder="Email"><br><br>
+<input type="password" placeholder="Password"><br><br>
+<button onclick="closeLogin()">Login</button>
+</div>
+
+<!-- BUTTONS -->
+<div class="mainButtons">
+<button onclick="showSection('programming')">Programming Notes</button>
+<button onclick="showSection('web')">Web Development</button>
+<button onclick="showSection('database')">Database Notes</button>
+</div>
+
+<!-- PROGRAMMING -->
+<div id="programming" class="container">
+<div class="card"><h3>☕ Java</h3><a href="uploads/java.pdf"><button>Download</button></a></div>
+<div class="card"><h3>🐍 Python</h3><a href="uploads/python.pdf"><button>Download</button></a></div>
+<div class="card"><h3>💻 C++</h3><a href="uploads/cpp.pdf"><button>Download</button></a></div>
+</div>
+
+<!-- WEB -->
+<div id="web" class="container">
+<div class="card"><h3>🌐 HTML</h3><a href="uploads/html.pdf"><button>Download</button></a></div>
+<div class="card"><h3>🎨 CSS</h3><a href="uploads/css.pdf"><button>Download</button></a></div>
+<div class="card"><h3>⚡ JavaScript</h3><a href="uploads/js.pdf"><button>Download</button></a></div>
+</div>
+
+<!-- DATABASE -->
+<div id="database" class="container">
+<div class="card"><h3>🗄️ SQL</h3><a href="uploads/sql.pdf"><button>Download</button></a></div>
+<div class="card"><h3>🏢 Oracle</h3><a href="uploads/oracle.pdf"><button>Download</button></a></div>
+</div>
+
+<!-- CONTENT -->
+<section class="section">
+<h2>About Computer Department</h2>
+<p>Computer science involves programming, AI, web and database systems.</p>
+<img src="https://images.unsplash.com/photo-1518770660439-4636190af475">
 </section>
 
-<section class="container" id="notes">
-
-    <div class="card">
-        <i class="fa-brands fa-java"></i>
-        <h3>Java Notes</h3>
-        <a href="uploads/java.pdf" download>Download</a>
-    </div>
-
-    <div class="card">
-        <i class="fa-brands fa-python"></i>
-        <h3>Python Notes</h3>
-        <a href="uploads/python.pdf" download>Download</a>
-    </div>
-
-    <div class="card">
-        <i class="fa-solid fa-code"></i>
-        <h3>C++ Notes</h3>
-        <a href="uploads/cpp.pdf" download>Download</a>
-    </div>
-
-    <div class="card">
-        <i class="fa-brands fa-html5"></i>
-        <h3>HTML Notes</h3>
-        <a href="uploads/html.pdf" download>Download</a>
-    </div>
-
+<section class="section">
+<h2>Technologies Covered</h2>
+<p>Java, Python, Web Dev, SQL, Cloud, AI.</p>
+<img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d">
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="section">
-    <h2>About Website</h2>
-    <p>This website is created by Piyush to provide free programming notes for students.</p>
-    <img src="https://cdn-icons-png.flaticon.com/512/2721/2721297.png">
-    <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png">
+<section class="section">
+<h2>Importance of Computer Education</h2>
+<p>Essential for modern digital world and career growth.</p>
+<img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d">
 </section>
 
-<!-- RESOURCES -->
-<section id="resources" class="section">
-    <h2>Useful Resources</h2>
-    <p>
-        🔗 <a href="https://www.w3schools.com/" target="_blank">W3Schools</a><br><br>
-        🔗 <a href="https://developer.mozilla.org/" target="_blank">MDN Docs</a><br><br>
-        🔗 <a href="https://www.geeksforgeeks.org/" target="_blank">GeeksforGeeks</a>
-    </p>
+<section class="section">
+<h2>Future Scope</h2>
+<p>AI, ML, Cybersecurity and Cloud computing are future.</p>
+<img src="https://tse1.mm.bing.net/th/id/OIP.l3Jf1-lKaT-fa7JSuay4gwAAAA?pid=Api&rs=1&c=1&qlt=95&w=120&h=120">
+</section>
+
+<!-- STATS -->
+<section class="stats">
+<div><h2 id="c1">0</h2>Students</div>
+<div><h2 id="c2">0</h2>Notes</div>
+<div><h2 id="c3">0</h2>Downloads</div>
 </section>
 
 <footer>
-    © 2026 Piyush
+<h2>Computer Department</h2>
+<p>Free notes platform for students</p>
+
+<p>
+<a href="https://www.linkedin.com" target="_blank" style="color:white;">LinkedIn</a> |
+<a href="https://github.com" target="_blank" style="color:white;">GitHub</a>
+</p>
+
+<p>© 2026 Piyush</p>
 </footer>
 
 <script>
-// LOADER
-window.onload = function() {
-    document.getElementById("loader").style.display = "none";
-    document.body.style.display = "block";
-};
+// LOGIN
+function openLogin(){document.getElementById("loginBox").style.display="block";}
+function closeLogin(){document.getElementById("loginBox").style.display="none";}
 
-// DARK MODE
-function toggleDark() {
-    document.body.classList.toggle("dark");
+// SECTION SWITCH
+function showSection(id){
+document.querySelectorAll(".container").forEach(c=>c.style.display="none");
+document.getElementById(id).style.display="grid";
 }
 
-// SEARCH
-document.getElementById("search").addEventListener("keyup", function() {
-    let value = this.value.toLowerCase();
-    let cards = document.querySelectorAll(".card");
-
-    cards.forEach(card => {
-        card.style.display = card.innerText.toLowerCase().includes(value) ? "block" : "none";
-    });
+// SCROLL ANIMATION
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
 });
+});
+document.querySelectorAll(".section").forEach(el=>observer.observe(el));
+
+// COUNTER
+function counter(id,max){
+let i=0;
+let interval=setInterval(()=>{
+i+=10;
+document.getElementById(id).innerText=i;
+if(i>=max) clearInterval(interval);
+},50);
+}
+counter("c1",500);
+counter("c2",50);
+counter("c3",1000);
 </script>
 
 </body>
